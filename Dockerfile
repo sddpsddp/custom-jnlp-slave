@@ -4,7 +4,7 @@ FROM ${BASEIMAGE}
 # this image assumes compatible version of JAVA has been installed
 # Kubectl for AWS EKS
 ADD https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl /usr/local/bin/kubectl 
-RUN ["chmod", "+x", "/usr/local/bin/kubectl"] 
+
 
 # copied from jenkins/slave
 ENV HOME /home/jenkins
@@ -31,3 +31,4 @@ WORKDIR /home/jenkins
 # some env-vars are reserved by jenkins-slave see the script for detail
 COPY jenkins-slave /usr/local/bin/jenkins-slave
 ENTRYPOINT ["jenkins-slave"]
+ENTRYPOINT ["kubectl"]
