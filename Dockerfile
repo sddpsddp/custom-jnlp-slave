@@ -3,9 +3,8 @@ FROM ${BASEIMAGE}
 
 # this image assumes compatible version of JAVA has been installed
 # Kubectl for AWS EKS
-ADD https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl /tmp/kubectl \
-    && chmod 655 /tmp/kubectl \
-    && mv /tmp/kubectl  /usr/local/bin/kubectl 
+ADD https://amazon-eks.s3.us-west-2.amazonaws.com/1.15.10/2020-02-22/bin/linux/amd64/kubectl /usr/local/bin/kubectl 
+RUN ["chmod", "+x", "/usr/local/bin/kubectl"] 
 
 # copied from jenkins/slave
 ENV HOME /home/jenkins
